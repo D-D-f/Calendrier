@@ -5,7 +5,7 @@ import { ActiveContext } from "../../Context/ActiveContext";
 import HeadTable from "../HeadTable/HeadTable";
 import "./ContainerInput.css";
 
-const ContainerInput = ({ lang }) => {
+const ContainerInput = () => {
   const { displayDateTime, activeDateTime } = useContext(ActiveContext);
   return (
     <>
@@ -15,7 +15,7 @@ const ContainerInput = ({ lang }) => {
         style={activeDateTime ? { display: "block" } : { display: "none" }}
       >
         <HeadTable />
-        <DateTimePicker lang={lang} />
+        <DateTimePicker />
       </div>
     </>
   );

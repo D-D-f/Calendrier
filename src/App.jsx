@@ -6,7 +6,7 @@ import ContainerInput from "./Component/ContainerInput/ContainerInput";
 const App = () => {
   return (
     <ActiveContextProvider>
-      <ContainerInput lang={"eng"} />
+      <ContainerInput />
     </ActiveContextProvider>
   );
 };

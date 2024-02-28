@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ActiveContext } from "../../Context/ActiveContext";
 
-const List = ({ bool, list }) => {
-  const styleList = {
-    display: bool ? "block" : "none",
+const List = ({ typeDate, list }) => {
+  const { activeListMonth, activeListYear, displayYearList, displayMonthList } =
+    useContext(ActiveContext);
+  let styleList;
+
+  if (typeDate === "month") {
+    styleList = {
+      display: activeListMonth ? "block" : "none",
+    };
+  } else {
+    styleList = {
+      display: activeListYear ? "block" : "none",
+    };
+  }
+
+  const changeModeActive = () => {
+    if (typeDate === "month") {
+      return displayMonthList();
+    } else {
+      return displayYearList();
+    }
   };
 
+  const displayList = list.map((value, index) => <li key={index}>{value}</li>);
+
   return (
-    <div style={{ ...styleList }}>
-      <ul>
-        <li>qsdsqd</li>
-      </ul>
+    <div onClick={changeModeActive} style={{ ...styleList }}>
+      <ul>{displayList}</ul>
     </div>
   );
 };
