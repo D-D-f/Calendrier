@@ -1,0 +1,4 @@
+.HeadTable {
+  display: flex;
+  justify-content: space-between;
+}
