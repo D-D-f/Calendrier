@@ -1,9 +1,15 @@
 import React from "react";
 
-const List = () => {
+const List = ({ bool, list }) => {
+  const styleList = {
+    display: bool ? "block" : "none",
+  };
+
   return (
-    <div>
-      <ul></ul>
+    <div style={{ ...styleList }}>
+      <ul>
+        <li>qsdsqd</li>
+      </ul>
     </div>
   );
 };
