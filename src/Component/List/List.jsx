@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import "./List.css";
 import { ActiveContext } from "../../Context/ActiveContext";
 import UseDateHooks from "../../CustomHooks/UseDateHooks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 
 const List = ({ typeDate, list }) => {
   const { activeListMonth, activeListYear, displayYearList, displayMonthList } =
     useContext(ActiveContext);
-  const { currentMonth, currentYear } = UseDateHooks();
   let styleList;
+  const { years, currentMonth, setCurrentMonth, setCurrentYear, currentYear } =
+    UseDateHooks();
 
   if (typeDate === "month") {
     styleList = {
@@ -27,12 +30,28 @@ const List = ({ typeDate, list }) => {
     }
   };
 
-  const displayList = list.map((value, index) => <li key={index}>{value}</li>);
+  const displayList = list.map((value, index) => (
+    <li
+      onClick={() =>
+        typeDate === "month" ? setCurrentMonth(index) : setCurrentYear(index)
+      }
+      key={index}
+    >
+      {value}
+    </li>
+  ));
 
   return (
     <div onClick={changeModeActive}>
-      <div style={{ position: "relative", fontSize: "12px" }}>
-        {list[typeDate === "month" ? currentMonth : currentYear]}
+      <div className="containerList">
+        <span>
+          {typeDate === "month" ? list[currentMonth] : years[currentYear]}
+        </span>
+        <FontAwesomeIcon
+          icon={faSortDown}
+          size="xs"
+          style={{ marginLeft: "5px" }}
+        />
         <ul className="listStyle" style={{ ...styleList }}>
           {displayList}
         </ul>

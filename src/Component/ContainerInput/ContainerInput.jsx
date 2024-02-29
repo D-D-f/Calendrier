@@ -2,11 +2,11 @@ import React from "react";
 import DateTimePicker from "../DateTimePicker/DateTimePicker";
 import { useContext } from "react";
 import { ActiveContext } from "../../Context/ActiveContext";
-import HeadTable from "../HeadTable/HeadTable";
 import "./ContainerInput.css";
 
 const ContainerInput = () => {
   const { displayDateTime, activeDateTime } = useContext(ActiveContext);
+
   return (
     <>
       <input onClick={displayDateTime} readOnly type="text" />
@@ -14,7 +14,6 @@ const ContainerInput = () => {
         className="containerTable"
         style={activeDateTime ? { display: "block" } : { display: "none" }}
       >
-        <HeadTable />
         <DateTimePicker />
       </div>
     </>

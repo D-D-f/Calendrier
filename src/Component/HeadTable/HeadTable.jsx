@@ -6,22 +6,21 @@ import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import UseDateHooks from "../../CustomHooks/UseDateHooks.js";
 
 const HeadTable = () => {
-  const { decrementTheMonth, incrementTheMonth, years, months } =
-    UseDateHooks();
+  const { months, years } = UseDateHooks();
 
   return (
     <div className="HeadTable">
       <FontAwesomeIcon
-        onClick={decrementTheMonth}
         icon={faCaretLeft}
         size="xs"
+        style={{ cursor: "pointer" }}
       />
       <List typeDate="month" list={months} />
       <List typeDate="year" list={years} />
       <FontAwesomeIcon
-        onClick={incrementTheMonth}
         icon={faCaretRight}
         size="xs"
+        style={{ cursor: "pointer" }}
       />
     </div>
   );

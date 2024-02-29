@@ -4,10 +4,20 @@
   height: 100px;
   z-index: 1;
   background-color: white;
-  padding: 5px;
+  padding: 10px;
   overflow-y: scroll;
+  cursor: pointer;
 }
 
 li {
+  font-size: 12px;
+}
+
+.containerList,
+.containerList span {
+  position: "relative";
+  cursor: "pointer";
+  user-select: "none";
+  cursor: pointer;
   font-size: 12px;
 }
