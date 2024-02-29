@@ -1,0 +1,13 @@
+.listStyle {
+  list-style: none;
+  position: absolute;
+  height: 100px;
+  z-index: 1;
+  background-color: white;
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+li {
+  font-size: 12px;
+}
