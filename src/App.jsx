@@ -1,13 +1,12 @@
 import "./App.css";
 import React from "react";
-import ActiveContextProvider from "./Context/ActiveContext";
-import ContainerInput from "./Component/ContainerInput/ContainerInput";
+import AllRoutes from "./Router/AllRoutes";
 
 const App = () => {
   return (
-    <ActiveContextProvider>
-      <ContainerInput />
-    </ActiveContextProvider>
+    <>
+      <AllRoutes />
+    </>
   );
 };
 
