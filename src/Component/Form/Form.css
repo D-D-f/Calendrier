@@ -1,0 +1,13 @@
+.containerInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerInput label,
+.containerInput {
+  margin-bottom: 10px;
+}
+
+.containerInput:first-child {
+  margin-top: 10px;
+}
