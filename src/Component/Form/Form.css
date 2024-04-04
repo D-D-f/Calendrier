@@ -1,6 +1,12 @@
 .containerInput {
   display: flex;
   flex-direction: column;
+  width: 340px;
+  position: relative;
+}
+
+.containerInput input {
+  width: 50%;
 }
 
 .containerInput label,
@@ -10,4 +16,15 @@
 
 .containerInput:first-child {
   margin-top: 10px;
+}
+
+.calendar {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  background-color: white;
+}
+
+fieldset {
+  padding: 10px;
 }
