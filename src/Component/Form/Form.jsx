@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// @ts-ignore
 import { CalendarPicker } from "simple-calendar-react-library";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
@@ -12,8 +13,19 @@ const Form = () => {
     start: "",
   });
   const { register, handleSubmit, control } = useForm();
-  const onSubmit = (d) => {
-    console.log(d);
+  const onSubmit = (dataForm) => {
+    let employees = [];
+
+    if (localStorage.getItem("employees")) {
+      // @ts-ignore
+      let getEmployees = JSON.parse(localStorage.getItem("employees"));
+      localStorage.removeItem("employees");
+      employees.push(getEmployees, dataForm);
+      localStorage.setItem("employees", JSON.stringify(employees));
+      // @ts-ignore
+    } else {
+      localStorage.setItem("employees", JSON.stringify(dataForm));
+    }
   };
 
   const states = [
