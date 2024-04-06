@@ -15,13 +15,17 @@ const Form = () => {
   const { register, handleSubmit, control } = useForm();
 
   const onSubmit = (dataForm) => {
+    let newData = [];
+    newData.push(dataForm);
+    console.log(newData);
+
     if (localStorage.getItem("employees")) {
-      let allEmployees = JSON.parse(localStorage.getItem("employees"));
-      allEmployees.push(dataForm);
-      localStorage.setItem("employees", JSON.stringify(allEmployees));
-    } else {
-      localStorage.setItem("employees", JSON.stringify(dataForm));
+      // @ts-ignore
+      let data = JSON.parse(localStorage.getItem("employees"));
+      newData.push(...data);
     }
+
+    localStorage.setItem("employees", JSON.stringify(newData));
   };
 
   const states = [

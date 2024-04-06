@@ -4,10 +4,13 @@ import "./Employees.css";
 const Employees = () => {
   const [listDisplay, setListDisplay] = useState(10);
   // @ts-ignore
-  const allEmployees = JSON.parse(localStorage.getItem("employees"));
+  const allEmployees = localStorage.getItem("employees")
+    ? // @ts-ignore
+      JSON.parse(localStorage.getItem("employees"))
+    : [];
 
+  console.log(allEmployees);
   const filterEmployees = allEmployees.splice(0, listDisplay);
-
   const displayEmployees = filterEmployees.map((employes, index) => {
     return (
       <tr key={index} role="row">
@@ -139,8 +142,7 @@ const Employees = () => {
       </table>
       <div>
         <p>
-          Showing 1 to {displayEmployees.length} of {displayEmployees.length}{" "}
-          entries
+          Showing 1 to {displayEmployees.length} of {listDisplay} entries
         </p>
       </div>
       <a href="/">Home</a>
