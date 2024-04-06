@@ -13,16 +13,12 @@ const Form = () => {
     start: "",
   });
   const { register, handleSubmit, control } = useForm();
-  const onSubmit = (dataForm) => {
-    let employees = [];
 
+  const onSubmit = (dataForm) => {
     if (localStorage.getItem("employees")) {
-      // @ts-ignore
-      let getEmployees = JSON.parse(localStorage.getItem("employees"));
-      localStorage.removeItem("employees");
-      employees.push(getEmployees, dataForm);
-      localStorage.setItem("employees", JSON.stringify(employees));
-      // @ts-ignore
+      let allEmployees = JSON.parse(localStorage.getItem("employees"));
+      allEmployees.push(dataForm);
+      localStorage.setItem("employees", JSON.stringify(allEmployees));
     } else {
       localStorage.setItem("employees", JSON.stringify(dataForm));
     }

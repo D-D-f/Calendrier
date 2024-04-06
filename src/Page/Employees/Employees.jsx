@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Employees.css";
 
 const Employees = () => {
+  const [listDisplay, setListDisplay] = useState(10);
+  // @ts-ignore
   const allEmployees = JSON.parse(localStorage.getItem("employees"));
-  const displayEmployees = allEmployees.map((employes, index) => {
+
+  const filterEmployees = allEmployees.splice(0, listDisplay);
+
+  const displayEmployees = filterEmployees.map((employes, index) => {
     return (
       <tr key={index} role="row">
         <td>{employes.firstName}</td>
@@ -22,6 +27,18 @@ const Employees = () => {
   return (
     <>
       <h1 className="h1">Current Employees</h1>
+      <div>
+        <label>
+          <span>Show </span>
+          <select onChange={(e) => setListDisplay(Number(e.target.value))}>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span> entries</span>
+        </label>
+      </div>
       <table>
         <thead className="thead">
           <tr role="row">
@@ -120,6 +137,12 @@ const Employees = () => {
         </thead>
         <tbody>{displayEmployees}</tbody>
       </table>
+      <div>
+        <p>
+          Showing 1 to {displayEmployees.length} of {displayEmployees.length}{" "}
+          entries
+        </p>
+      </div>
       <a href="/">Home</a>
     </>
   );
