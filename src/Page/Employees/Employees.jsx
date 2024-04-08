@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import ArrowTop from "../../Component/ArrowTop/ArrowTop";
 import ArrowDown from "../../Component/ArrowDown/ArrowDown";
 import "./Employees.css";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Employees = () => {
   const [listDisplay, setListDisplay] = useState(10);
+  const [searchUser, setSearchUser] = useState("");
   // @ts-ignore
   const allEmployees = localStorage.getItem("employees")
     ? // @ts-ignore
@@ -12,7 +14,22 @@ const Employees = () => {
     : [];
 
   const filterEmployees = allEmployees.splice(0, listDisplay);
-  const displayEmployees = filterEmployees.map((employes, index) => {
+
+  const filterSearchUser = filterEmployees.filter((info) => {
+    const searchLowerCase = searchUser.toLowerCase();
+    for (let data in info) {
+      const lowercaseWord =
+        typeof info[data] === "string"
+          ? info[data].toLowerCase()
+          : info[data].value.toLowerCase();
+      if (lowercaseWord.includes(searchLowerCase)) {
+        return true;
+      }
+    }
+    return false;
+  });
+
+  const displayEmployees = filterSearchUser.map((employes, index) => {
     return (
       <tr
         key={index}
@@ -52,7 +69,11 @@ const Employees = () => {
 
           <div>
             <label htmlFor="search">Search: </label>
-            <input type="text" name="search" />
+            <input
+              type="text"
+              name="search"
+              onChange={(e) => setSearchUser(e.currentTarget.value)}
+            />
           </div>
         </div>
         <table className="table-employees">
