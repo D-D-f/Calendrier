@@ -1,8 +1,63 @@
-.sorting,
-.thead th {
-  background-color: white;
-}
-
 .h1 {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.nextList {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nextList button {
+  padding: 10px 20px;
+}
+
+.bottomTable {
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerTable {
+  width: 960px;
+  margin: auto;
+}
+
+.containerTable table {
+  margin: 10px 0;
+  box-sizing: content-box;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-bottom: 1px solid #111;
+  clear: both;
+}
+
+.containerTable table tr {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.containerTable td {
+  padding: 8px 10px;
+}
+
+.containerTable a {
+  display: block;
+  text-align: center;
+}
+
+.filterTable {
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrowSpanTop {
+  position: absolute;
+  right: 1px;
+}
+
+.arrowSpanDown {
+  position: absolute;
+  right: 1px;
 }
