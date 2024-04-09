@@ -61,3 +61,27 @@
   position: absolute;
   right: 1px;
 }
+
+.sorting,
+.sorting_asc {
+  cursor: pointer;
+}
+
+.firstName,
+.lastName,
+.startdate,
+.departement,
+.dateofbirth,
+.selectField,
+.street,
+.city,
+.state,
+.zipcode {
+  background-color: #f1f1f1;
+}
+
+.testtr td,
+.testtr {
+  width: 120px;
+  text-align: center;
+}
