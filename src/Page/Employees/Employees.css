@@ -80,8 +80,8 @@
   background-color: #f1f1f1;
 }
 
-.testtr td,
-.testtr {
+.classTr td,
+.classTr {
   width: 120px;
   text-align: center;
 }

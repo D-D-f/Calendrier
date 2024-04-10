@@ -93,7 +93,7 @@ const Employees = () => {
   const displayEmployees = filterSearchUser.map((employes, index) => {
     return (
       <tr
-        className="testtr"
+        className="classTr"
         key={index}
         role="row"
         style={{
@@ -175,10 +175,18 @@ const Employees = () => {
               >
                 First Name
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="firstName"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="firstName"
+                  />
                 </span>
               </th>
               <th
@@ -194,10 +202,18 @@ const Employees = () => {
               >
                 Last Name
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="lastName"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="lastName"
+                  />
                 </span>
               </th>
               <th
@@ -213,10 +229,18 @@ const Employees = () => {
               >
                 Start Date
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="startdate"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="startdate"
+                  />
                 </span>
               </th>
               <th
@@ -235,10 +259,18 @@ const Employees = () => {
               >
                 Department
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="departement"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="departement"
+                  />
                 </span>
               </th>
               <th
@@ -254,10 +286,18 @@ const Employees = () => {
               >
                 Date of Birth
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="dateofbirth"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="dateofbirth"
+                  />
                 </span>
               </th>
               <th
@@ -273,10 +313,18 @@ const Employees = () => {
               >
                 Street
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="street"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="street"
+                  />
                 </span>
               </th>
               <th
@@ -292,10 +340,18 @@ const Employees = () => {
               >
                 City
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="city"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="city"
+                  />
                 </span>
               </th>
               <th
@@ -314,10 +370,18 @@ const Employees = () => {
               >
                 State
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="state"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="state"
+                  />
                 </span>
               </th>
               <th
@@ -334,10 +398,18 @@ const Employees = () => {
               >
                 Zip Code
                 <span className="arrowSpanTop">
-                  <ArrowTop />
+                  <ArrowTop
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="zipcode"
+                  />
                 </span>
                 <span className="arrowSpanDown">
-                  <ArrowDown />
+                  <ArrowDown
+                    nameArrow={orderKey.key}
+                    orderActive={orderKey.order}
+                    name="zipcode"
+                  />
                 </span>
               </th>
             </tr>
