@@ -16,14 +16,12 @@ const Form = () => {
 
   const onSubmit = (dataForm) => {
     let newData = [];
-    newData.push(dataForm);
-    console.log(newData);
-
     if (localStorage.getItem("employees")) {
       // @ts-ignore
       let data = JSON.parse(localStorage.getItem("employees"));
       newData.push(...data);
     }
+    newData.push(dataForm);
 
     localStorage.setItem("employees", JSON.stringify(newData));
   };

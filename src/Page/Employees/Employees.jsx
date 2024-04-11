@@ -4,6 +4,7 @@ import ArrowDown from "../../Component/ArrowDown/ArrowDown";
 import "./Employees.css";
 
 const Employees = () => {
+  const [numPage, setNumPage] = useState(0)
   const [listDisplay, setListDisplay] = useState(10);
   const [searchUser, setSearchUser] = useState("");
   const [orderKey, setOrderKey] = useState({ key: "firstName", order: true });
@@ -13,7 +14,22 @@ const Employees = () => {
       JSON.parse(localStorage.getItem("employees"))
     : [];
 
-  const filterEmployees = allEmployees.splice(0, listDisplay);
+  const allPages = Math.round(allEmployees.length / listDisplay);
+  const allButonsPages = [];
+
+  const changePages = (e) => {
+    setNumPage(e.target.value)
+  }
+  for(let i = 0; i < allPages; i++) {
+    allButonsPages.push(i)
+  }
+
+  const copyAllEmployees = [...allEmployees];
+  const filterEmployees = copyAllEmployees.splice(
+    numPage * listDisplay,
+     listDisplay
+  );
+
   const filterSearchUser = filterEmployees.filter((info) => {
     const searchLowerCase = searchUser.toLowerCase();
     for (let data in info) {
@@ -418,12 +434,13 @@ const Employees = () => {
         </table>
         <div className="bottomTable">
           <p>
-            Showing 1 to {displayEmployees.length} of {listDisplay} entries
+            Showing 1 to {displayEmployees.length} of {allEmployees.length <=0 ? "0" : allEmployees.length}{" "}
+            entries
           </p>
 
           <div className="nextList">
             <span>Previous</span>
-            <button>1</button>
+            {allButonsPages.map((value, index) => <button key={index} value={value} onClick={(e) => changePages(e)}>{value +1}</button>)}
             <span>Next</span>
           </div>
         </div>
