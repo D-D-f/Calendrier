@@ -14,7 +14,7 @@ const Employees = () => {
       JSON.parse(localStorage.getItem("employees"))
     : [];
 
-  const allPages = Math.round(allEmployees.length / listDisplay);
+  const allPages = Math.ceil(allEmployees.length / listDisplay);
   const allButonsPages = [];
 
   const changePages = (e) => {
