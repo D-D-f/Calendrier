@@ -2,14 +2,12 @@ import React, {useState} from "react";
 // @ts-ignore
 import { CalendarPicker } from "simple-calendar-react-library";
 import { useForm, Controller } from "react-hook-form";
-import Modal from "../Modal/Modal";
 import Select from "react-select";
 import "./Form.css";
 
-const Form = () => {
+const Form = ({setActiveModal}) => {
   const [activeCalendarBirthday, setActiveCalendarBirthday] = useState(false);
   const [activeCalendarStart, setActiveCalendarStart] = useState(false);
-  const [activeModal, setActiveModal] = useState(false);
   const [dateStarAndBirthday, setDateStartAndBirthday] = useState({
     birthday: "",
     start: "",
@@ -309,88 +307,85 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="containerInput">
-        <label htmlFor="firstName">First Name</label>
-        <input type="text" {...register("firstName")} />
-      </div>
-      <div className="containerInput">
-        <label htmlFor="lastName">Last Name</label>
-        <input type="text" {...register("lastName")} />
-      </div>
-      <div className="containerInput">
-        <label htmlFor="dateofbirth">Date Of Birth</label>
-        <input
-          type="text"
-          {...register("dateofbirth")}
-          value={dateStarAndBirthday.birthday}
-          onClick={displayCalendarBirthday}
-          readOnly
-        />
-        <div className="calendar">
-          {activeCalendarBirthday && (
-            <CalendarPicker getDate={getDateBirthday} langage="fr" start={1948} end={2030} />
-          )}
-        </div>
-      </div>
-      <div className="containerInput">
-        <label htmlFor="startdate">Start Date</label>
-        <input
-          type="text"
-          {...register("startdate")}
-          value={dateStarAndBirthday.start}
-          onClick={displayCalendarStart}
-          readOnly
-        />
-        <div className="calendar">
-          {activeCalendarStart && (
-            <CalendarPicker getDate={getDateStart} langage="fr" start={1948} end={2030} />
-          )}
-        </div>
-      </div>
-      <fieldset>
-        <legend>Address</legend>
-        <div className="containerInput">
-          <label htmlFor="street">Street</label>
-          <input type="text" {...register("street")} />
-        </div>
-        <div className="containerInput">
-          <label htmlFor="city">City</label>
-          <input type="text" {...register("city")} />
-        </div>
-        <div>
-          <label htmlFor="selectField">State</label>
-          <Controller
-            name="selectField"
-            control={control}
-            defaultValue={options[0]}
-            render={({ field }) => (
-              <Select {...field} options={options} isClearable />
-            )}
-          />
-        </div>
-        <div className="containerInput">
-          <label htmlFor="zipcode">Zip Code</label>
-          <input type="number" {...register("zipcode")} />
-        </div>
-      </fieldset>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="containerInput">
+            <label htmlFor="firstName">First Name</label>
+            <input type="text" {...register("firstName")} />
+          </div>
+          <div className="containerInput">
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" {...register("lastName")} />
+          </div>
+          <div className="containerInput">
+            <label htmlFor="dateofbirth">Date Of Birth</label>
+            <input
+                type="text"
+                {...register("dateofbirth")}
+                value={dateStarAndBirthday.birthday}
+                onClick={displayCalendarBirthday}
+                readOnly
+            />
+            <div className="calendar">
+              {activeCalendarBirthday && (
+                  <CalendarPicker getDate={getDateBirthday} langage="fr" start={1948} end={2030}/>
+              )}
+            </div>
+          </div>
+          <div className="containerInput">
+            <label htmlFor="startdate">Start Date</label>
+            <input
+                type="text"
+                {...register("startdate")}
+                value={dateStarAndBirthday.start}
+                onClick={displayCalendarStart}
+                readOnly
+            />
+            <div className="calendar">
+              {activeCalendarStart && (
+                  <CalendarPicker getDate={getDateStart} langage="fr" start={1948} end={2030}/>
+              )}
+            </div>
+          </div>
+          <fieldset>
+            <legend>Address</legend>
+            <div className="containerInput">
+              <label htmlFor="street">Street</label>
+              <input type="text" {...register("street")} />
+            </div>
+            <div className="containerInput">
+              <label htmlFor="city">City</label>
+              <input type="text" {...register("city")} />
+            </div>
+            <div>
+              <label htmlFor="selectField">State</label>
+              <Controller
+                  name="selectField"
+                  control={control}
+                  defaultValue={options[0]}
+                  render={({field}) => (
+                      <Select {...field} options={options} isClearable/>
+                  )}
+              />
+            </div>
+            <div className="containerInput">
+              <label htmlFor="zipcode">Zip Code</label>
+              <input type="number" {...register("zipcode")} />
+            </div>
+          </fieldset>
 
-      <div className="containerInput">
-        <label htmlFor="departement">Département</label>
-        <Controller
-          name="departement"
-          control={control}
-          defaultValue={department[0]}
-          render={({ field }) => (
-            <Select {...field} options={department} isClearable />
-          )}
-        />
-      </div>
-
-      <button type="submit" onClick={() => setActiveModal(true)}>Save</button>
-
-      <Modal active={activeModal} changeModal={setActiveModal} />
-    </form>
+          <div className="containerInput">
+            <label htmlFor="departement">Département</label>
+            <Controller
+                name="departement"
+                control={control}
+                defaultValue={department[0]}
+                render={({field}) => (
+                    <Select {...field} options={department} isClearable/>
+                )}
+            />
+          </div>
+          <button type="submit" onClick={() => setActiveModal(true)}>Save</button>
+        </form>
   );
 };
 
