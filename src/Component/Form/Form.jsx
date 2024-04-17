@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 // @ts-ignore
 import { CalendarPicker } from "simple-calendar-react-library";
 import { useForm, Controller } from "react-hook-form";
+import Modal from "../Modal/Modal";
 import Select from "react-select";
 import "./Form.css";
 
 const Form = () => {
   const [activeCalendarBirthday, setActiveCalendarBirthday] = useState(false);
   const [activeCalendarStart, setActiveCalendarStart] = useState(false);
+  const [activeModal, setActiveModal] = useState(false);
   const [dateStarAndBirthday, setDateStartAndBirthday] = useState({
     birthday: "",
     start: "",
@@ -26,6 +28,11 @@ const Form = () => {
     newData.push(dataForm);
     localStorage.setItem("employees", JSON.stringify(newData));
   };
+
+  const openModal = () => {
+    setActiveModal(true)
+  }
+
 
   const states = [
     {
@@ -322,7 +329,7 @@ const Form = () => {
         />
         <div className="calendar">
           {activeCalendarBirthday && (
-            <CalendarPicker getDate={getDateBirthday} langage="fr" />
+            <CalendarPicker getDate={getDateBirthday} langage="fr" start={1948} end={2030} />
           )}
         </div>
       </div>
@@ -337,7 +344,7 @@ const Form = () => {
         />
         <div className="calendar">
           {activeCalendarStart && (
-            <CalendarPicker getDate={getDateStart} langage="fr" />
+            <CalendarPicker getDate={getDateStart} langage="fr" start={1948} end={2030} />
           )}
         </div>
       </div>
@@ -380,7 +387,9 @@ const Form = () => {
         />
       </div>
 
-      <button type="submit">Save</button>
+      <button type="submit" onClick={() => setActiveModal(true)}>Save</button>
+
+      <Modal active={activeModal} changeModal={setActiveModal} />
     </form>
   );
 };
