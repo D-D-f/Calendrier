@@ -4,7 +4,7 @@ import ArrowDown from "../../Component/ArrowDown/ArrowDown";
 import "./Employees.css";
 
 const Employees = () => {
-  const [numPage, setNumPage] = useState(0)
+  const [numPage, setNumPage] = useState(0);
   const [listDisplay, setListDisplay] = useState(10);
   const [searchUser, setSearchUser] = useState("");
   const [orderKey, setOrderKey] = useState({ key: "firstName", order: true });
@@ -18,16 +18,16 @@ const Employees = () => {
   const allButonsPages = [];
 
   const changePages = (e) => {
-    setNumPage(e.target.value)
-  }
-  for(let i = 0; i < allPages; i++) {
-    allButonsPages.push(i)
+    setNumPage(e.target.value);
+  };
+  for (let i = 0; i < allPages; i++) {
+    allButonsPages.push(i);
   }
 
   const copyAllEmployees = [...allEmployees];
   const filterEmployees = copyAllEmployees.splice(
     numPage * listDisplay,
-     listDisplay
+    listDisplay
   );
 
   const filterSearchUser = filterEmployees.filter((info) => {
@@ -71,6 +71,24 @@ const Employees = () => {
             return 1;
           }
           return 0;
+        });
+      }
+    } else if (orderKey.key === "dateofbirth" || orderKey.key === "startdate") {
+      if (orderKey.order) {
+        return data.sort((a, b) => {
+          const dateA = new Date(a[key].split("/").reverse().join("/"));
+          const dateB = new Date(b[key].split("/").reverse().join("/"));
+
+          // @ts-ignore
+          return dateA - dateB;
+        });
+      } else {
+        return data.sort((a, b) => {
+          const dateA = new Date(a[key].split("/").reverse().join("/"));
+          const dateB = new Date(b[key].split("/").reverse().join("/"));
+
+          // @ts-ignore
+          return dateB - dateA;
         });
       }
     } else {
@@ -434,13 +452,17 @@ const Employees = () => {
         </table>
         <div className="bottomTable">
           <p>
-            Showing 1 to {displayEmployees.length} of {allEmployees.length <=0 ? "0" : allEmployees.length}{" "}
-            entries
+            Showing 1 to {displayEmployees.length} of{" "}
+            {allEmployees.length <= 0 ? "0" : allEmployees.length} entries
           </p>
 
           <div className="nextList">
             <span>Previous</span>
-            {allButonsPages.map((value, index) => <button key={index} value={value} onClick={(e) => changePages(e)}>{value +1}</button>)}
+            {allButonsPages.map((value, index) => (
+              <button key={index} value={value} onClick={(e) => changePages(e)}>
+                {value + 1}
+              </button>
+            ))}
             <span>Next</span>
           </div>
         </div>
